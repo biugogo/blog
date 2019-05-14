@@ -4,7 +4,7 @@ date: 2018-3-24 18:02:10
 tags:
  -Thrift
 categories: Framework
-thumbnail: /gallery/lol/2.jpg
+thumbnail: /gallery/lol/155784268684.jpg
 ---
 # Thrift
 -----------
