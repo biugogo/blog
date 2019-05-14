@@ -1,10 +1,10 @@
 ---
-title: Get Spring ApplicationContext
+title: ApplicationContext获取
 date: 2018-1-10 21:47:10
 tags:
  -Spring
 categories: Spring
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+thumbnail: /gallery/marvel/15578429281.jpg
 ---
 
 

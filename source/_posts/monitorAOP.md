@@ -4,7 +4,7 @@ date: 2018-2-07 16:14:10
 tags:
  -Spring
 categories: Spring
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+thumbnail: /gallery/marvel/1557842924765.jpg
 ---
 
 # Monitor Error Catch AOP

@@ -1,10 +1,10 @@
 ---
-title: spring注解扫描及原理分析
+title: Spring注解扫描及原理分析
 date: 2018-5-22 20:15:11
 tags:
  -Spring
 categories: Spring
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+thumbnail: /gallery/marvel/1557842940456.jpg
 ---
 
 

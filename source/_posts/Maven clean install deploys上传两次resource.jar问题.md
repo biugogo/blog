@@ -1,10 +1,10 @@
 ---
-title: Maven deploy两次sources.jar发布到release失败问题
+title: MavenDeploy两次sources.jar发布到release失败问题
 date: 2018-9-7 16:09:06
 tags:
  -Maven
-categories: Maven
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+categories: Basic
+thumbnail: /gallery/dog/1557842865848.jpg
 ---
 
 # Maven deploy 两次sources.jar，导致发布到release失败问题

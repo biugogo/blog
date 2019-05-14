@@ -2,9 +2,9 @@
 title: Thrift
 date: 2018-3-24 18:02:10
 tags:
- -RPC
-categories: RPC
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+ -Thrift
+categories: Framework
+thumbnail: /gallery/lol/2.jpg
 ---
 # Thrift
 -----------

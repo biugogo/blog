@@ -2,9 +2,9 @@
 title: Hystrix Configuration
 date: 2017-11-14 21:47:51
 tags:
- -Spring Cloud
-categories: Spring Cloud
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+ -Hystrix
+categories: Spring
+thumbnail: /gallery/marvel/155784291680.jpg
 ---
 
 # **Hystrix配置**

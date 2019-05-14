@@ -2,9 +2,9 @@
 title: Redis执行Lua脚本引擎Demo
 date: 2018-7-27 22:22:16
 tags:
- -DB
+ -Redis
 categories: DB
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+thumbnail: /gallery/marvel/1557842931503.jpg
 ---
 
 # Redis执行Lua脚本引擎Demo

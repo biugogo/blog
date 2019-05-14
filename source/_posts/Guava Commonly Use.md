@@ -1,10 +1,10 @@
 ---
-title: Guava常用写法
+title: Guava常用
 date: 2018-5-31 16:14:10
 tags:
  -Guava
-categories: Guava
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+categories: 装B专用
+thumbnail: /gallery/doraemon/155784280230.jpg
 ---
 
 

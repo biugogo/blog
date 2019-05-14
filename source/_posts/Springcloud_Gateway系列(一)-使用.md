@@ -2,9 +2,9 @@
 title: SpringCloud_Gateway系列(一)-使用
 date: 2018-9-25 21:47:51
 tags:
- -Spring Cloud
-categories: Spring Cloud
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+ -SpringCloud_Gateway
+categories: Spring
+thumbnail: /gallery/marvel/1557842935103.jpg
 ---
 
 # SpringCloud_Gateway系列(一)-使用

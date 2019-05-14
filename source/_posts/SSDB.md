@@ -1,10 +1,10 @@
 ---
-title: SSDB初步学习
+title: SSDB从零开始
 date: 2018-4-16 14:14:10
 tags:
- -DB
+ -SSDB
 categories: DB
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+thumbnail: /gallery/marvel/1557842973836.jpg
 ---
 
 # SSDB简单了解和配置+java简单接入

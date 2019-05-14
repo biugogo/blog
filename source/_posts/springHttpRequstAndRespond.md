@@ -1,10 +1,10 @@
 ---
-title: HttpServletRequest Thread Safety
+title: HttpServletRequest线程安全
 date: 2017-12-15 21:47:51
 tags:
  -Spring
 categories: Spring
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+thumbnail: /gallery/marvel/1557842936434.jpg
 ---
 
 

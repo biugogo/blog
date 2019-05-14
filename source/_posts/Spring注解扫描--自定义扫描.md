@@ -4,7 +4,7 @@ date: 2018-5-25 21:22:11
 tags:
  -Spring
 categories: Spring
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+thumbnail: /gallery/marvel/1557842940456.jpg
 ---
 
 

@@ -2,9 +2,9 @@
 title: SpringCloud Gateway系列（三）-整合
 date: 2018-9-27 15:00:02
 tags:
- -Spring Cloud
-categories: Spring Cloud
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+ -SpringCloud_Gateway
+categories: Spring
+thumbnail: /gallery/marvel/1557842935103.jpg
 ---
 
 

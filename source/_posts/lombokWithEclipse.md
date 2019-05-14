@@ -2,9 +2,9 @@
 title: Eclipse with lombok
 date: 2018-03-23 10:47:51
 tags:
- -Plug-in
-categories: Plug-in
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+ -Lombok
+categories: Basic
+thumbnail: /gallery/dog/155784288518.jpg
 ---
 
 # Eclipse with lombok

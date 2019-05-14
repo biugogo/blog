@@ -2,9 +2,9 @@
 title: Nginx简单学习
 date: 2018-4-5 18:02:10
 tags:
- -web server
-categories: web server
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+ -Nginx
+categories: Basic
+thumbnail: /gallery/dog/1557842867855.jpg
 ---
 
 # Nginx简单配置

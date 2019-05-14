@@ -2,9 +2,9 @@
 title: Mongo分表动态索引建立
 date: 2018-6-24 16:12:06
 tags:
- -DB
+ -MongoDB
 categories: DB
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+thumbnail: /gallery/marvel/1557842921367.jpg
 ---
 
 # Mongo分表动态索引建立

@@ -2,9 +2,9 @@
 title: Mongo with Spring
 date: 2018-04-5 10:47:51
 tags:
- -DB
+ -MongoDB
 categories: DB
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+thumbnail: /gallery/marvel/155784292920.jpg
 ---
 # Mongo
 ---------

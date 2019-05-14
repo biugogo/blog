@@ -2,9 +2,9 @@
 title: SpringCloud_Gateway系列(二)-源码分析
 date: 2018-9-26 16:50:52
 tags:
- -Spring Cloud
-categories: Spring Cloud
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+ -SpringCloud_Gateway
+categories: Spring
+thumbnail: /gallery/marvel/1557842935103.jpg
 ---
 
 

@@ -2,9 +2,9 @@
 title: RabbitMQ
 date: 2018-04-3 20:47:51
 tags:
- -MQ
-categories: MQ
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+ -Rabbit
+categories: Framework
+thumbnail: /gallery/dog/1557842869251.jpg
 ---
 
 # RabbitMQ

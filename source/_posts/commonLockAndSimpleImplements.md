@@ -2,9 +2,9 @@
 title: Common Lock
 date: 2018-2-07 16:14:10
 tags:
- -lock
-categories: lock
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+ -Basic
+categories: Basic
+thumbnail: /gallery/dog/155784287179.jpg
 ---
 
 # Common Lock

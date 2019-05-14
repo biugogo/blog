@@ -1,10 +1,10 @@
 ---
-title: Maven package 可执行Jar
+title: Maven 打包可执行Jar
 date: 2018-5-20 16:18:10
 tags:
  -Maven
-categories: Maven
-thumbnail: https://raw.githubusercontent.com/apollochen123/image/master/%E9%BB%98%E8%AE%A42.jpg
+categories: Basic
+thumbnail: /gallery/dog/1557842867855.jpg
 ---
 
 # Maven package 可执行Jar
