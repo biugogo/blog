@@ -7,6 +7,7 @@ categories: Spring
 thumbnail: /gallery/marvel/155784291680.jpg
 ---
 
+
 # **Hystrix配置**
  本文参考[spring官方文档](http://cloud.spring.io/spring-cloud-static/Camden.SR7/#_circuit_breaker_hystrix_clients)，[Hystrix Configuration](https://github.com/Netflix/Hystrix/wiki/Configuration) , [hystrix-javanica](https://github.com/Netflix/Hystrix/tree/master/hystrix-contrib/hystrix-javanica#configuration)完成。你可以在这里找到一些有用的信息
 ---
