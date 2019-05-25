@@ -19,7 +19,7 @@ thumbnail: /gallery/doraemon/1557842807990.jpg
 3. Mirrored Queue Master节点选择和数据迁移
 4. Mirrored Queue故障迁移细节
 
-----
+-------------------
 
 ###  Mirrored Queue是什么
 
@@ -39,6 +39,8 @@ non-Mirrored日志example
 ```
 operation queue.declare caused a channel exception not_found: home node 'rabbit@hostname' of durable queue 'queue-name' in v
 ```
+
+--------------------
 
 ### 如何配置Mirroring
 
