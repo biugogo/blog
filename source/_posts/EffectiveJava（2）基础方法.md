@@ -4,7 +4,7 @@ date: 2019-6-1 12:47:54
 tags:
  -EffectiveJava
 categories: Basic
-thumbnail: /gallery/lol/1557842703189.jpg.jpg
+thumbnail: /gallery/lol/1557842703189.jpg
 ---
 
 # EffectiveJava(2)--基础方法
@@ -19,10 +19,10 @@ thumbnail: /gallery/lol/1557842703189.jpg.jpg
 ### 1.hashCode()和equals()方法
 
 #### equals()原则
-1. 自反性(reflexive): 对于任何非null 的引用值x x . equals(x)必须返回true.
-2. 对称性(symmetric)：对于任何非null 的引用值x 和y,当且仅当y.equals(x)返回true 时， x.equals(y)必须返回true.
-3. 传递性(transitive): 对于任何非null 的引用值x 、y 和z,如果x.equals(y)返回true,并且y.equals(z)也返回true,那么x.equals(z)也必须返回true 0
-4. 一致性(consistent): 对于任何非null 的引用值x 和y,只要equals 的比较操作在对象中所用的信息没有被修改，多次调用x.equals(y)就会一致地返回true,
+1. 自反性(reflexive): 对于任何非null的引用值x x . equals(x)必须返回true.
+2. 对称性(symmetric)：对于任何非null的引用值x 和y,当且仅当y.equals(x)返回true 时， x.equals(y)必须返回true.
+3. 传递性(transitive): 对于任何非null的引用值x 、y 和z,如果x.equals(y)返回true,并且y.equals(z)也返回true,那么x.equals(z)也必须返回true 0
+4. 一致性(consistent): 对于任何非null的引用值x 和y,只要equals 的比较操作在对象中所用的信息没有被修改，多次调用x.equals(y)就会一致地返回true,
 或者一致地返回false
 5. 对于任何非null 的引用值x, x.equals (null)必须返回false 。
 
@@ -169,7 +169,7 @@ public class BuilderDemo {
 
 -------
 
-### 始终要覆盖toString
+### 3.始终要覆盖toString
 1. 提供好的toString实现可以便类用起来更加舒适，使用了这个类的系统也更易于调试
 2. 在实际应用中,toString方法应该返回对象中包含的所有值得关注的信息，
 
