@@ -37,6 +37,7 @@ thumbnail: /gallery/lol/1557842705274.jpg
 3. 实例域：公有类的实例域决不能是公有的：如果实例域是非final 的，或者是一
 个指向可变对象的final 引用， 那么一旦使这个域成为公有的，就等于放弃了对存储在这个域中的值进行限制的能力。包含公有可变域的类通常并不是线程安全的。
 4. 静态域：除了大写常量构成了类提供的整个抽象中的一部分，可以通过公有的静态final域来暴露这些常量。特别注意的是**长度非零的数组**总是可变的，所以让类具有公有的静态final数组域，或者返回这种域的访问方法，这是错误的。
+
 ```java
 public static final Thing[] VALUES= { .. . }; //错误用法
 
@@ -73,6 +74,7 @@ class A {
 继承是实现代码重用的有力手段，但它并非永远是完成这项工作的最佳工具。对于专门为了继承而设计并且具有很好的文档说明的类来说，使用继承也是非常安全的，但是对普通的具体类进行跨越包边界的继承，则是非常危险的。
 
 以下是一个使用继承出现问题的例子
+
 ```java
 import java.util.Arrays;
 import java.util.Collection;
@@ -107,7 +109,9 @@ public class MySet<E> extends HashSet<E> {
 }
 
 ```
+
 按照我们的设计，我们通过addAll添加一个 "1" 字符串元素到MySet中，addCount输出应该是1，但是很抱歉，这里会输出2。当我们仔细去addAll文档时，我们会发现，HashSet的addAll是基于add方法的，这里添加一个元素，addCount会增加两次。
+
 ```java
     //HashSet的addAll方法
     public boolean addAll(Collection<? extends E> c) {
@@ -120,6 +124,7 @@ public class MySet<E> extends HashSet<E> {
 ```
 
 所以，当我们没有阅读继承文档，不清楚一个类的内部实现时，使用继承是非常危险的。当我们不想耗费时间去阅读一个类是继承文档时，我们可以选择 “复合”模式去解决
+
 ```java
 public class MySet<E> {
     private int addCount;
@@ -219,6 +224,7 @@ public interface Consumer {
 }
 ```
 实现了骨架类DefaultConsumer，让我们可以任意覆盖使用到的方法
+
 ```java
 public class DefaultConsumer implements Consumer {
     /** Channel that this consumer is associated with. */
@@ -290,13 +296,16 @@ public class DefaultConsumer implements Consumer {
 -----
 ### 5. 拒绝常量接口，接口只用于定义类型
 很多程序员喜欢用Interface定义常量
+
 ```java
 public interface Constants {
     final static int INT_1 = 1;
 }
 ```
+
 常量接口模式是对接口的不良使用,如果要导出常量，可以有几种合理的选择方案。
 1. 如果这些常量与某个现有的类或者接口紧密相关，就应该把这些常量添加到这个类或者接口中。例如Integer中的
+
     ```java
     @Native public static final int   MIN_VALUE = 0x80000000;
 
