@@ -302,6 +302,7 @@ getInstance方法使用了Class的cast方法, 将对象引用动态地转换(dyn
         ParameterizedType parameterizedType = (ParameterizedType) list.getClass().getGenericSuperclass();
         System.out.println(parameterizedType);
 ```
+
 同样的代码，只是多了一对{}，为什么这时候，可以获取到list的type是
 java.util.ArrayList<java.lang.Integer> 。这是因为list此时是 ArrayList<Integer>的匿名子类。这段代码相当于
 
