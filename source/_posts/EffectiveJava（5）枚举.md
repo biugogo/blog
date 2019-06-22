@@ -256,6 +256,7 @@ public enum Position {
 
 
 2. 枚举策略委托
+
 ```java
 public enum Position {
     Manager(100_000, Allowance.Others) {
