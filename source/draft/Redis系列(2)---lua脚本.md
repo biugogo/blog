@@ -54,7 +54,7 @@ Redis保证所有被运行过的脚本都会被永久保存在脚本缓存当中
 3. SCRIPT LOAD ：将一个脚本装入脚本缓存，但并不立即运行它
 4. SCRIPT KILL ：杀死当前正在运行的脚本
 
-### 脚本数据同步和编写规则
+### 脚本数据同步
 
 #### Lua数据同步
 Redis Lua数据同步有两种方式
@@ -62,13 +62,14 @@ Redis Lua数据同步有两种方式
 2. **scripts effects replication** 脚本影响同步---lua运行过程中，Redis收集所有对数据集的修改的命令，当脚本执行结束后，收集的命令将会被MULTI/EXEC事务包裹传递到从节点或者AOF。
 
 同步方式在各个版本的变化：
-1. 3.2之前:只有 **whole scripts replication** 同步。
-2. 3.2-5.0之间:支持 **whole scripts replication**（默认）和-**scripts effects replication**。可以通过在脚本运行写命令之前显示调用以下命令开启：
+1. Reids 3.2之前:只有 **whole scripts replication** 同步。
+2. Reids 3.2-5.0之间:支持 **whole scripts replication**（默认）和-**scripts effects replication**。可以通过在脚本运行写命令之前显示调用以下命令开启：
   ```
   redis.replicate_commands()
   ```
-3. 5.0之后:**scripts effects replication**是不再需要显示开启，默认开启。
+3. Reids 5.0之后:**scripts effects replication**是不再需要显示开启，默认开启。
 
+#### 脚本编写规则
 
 使用**whole scripts replication**时，所以Redis Lua需要遵循一些原则：
 1. Redis的写命令必须写入一个定量，而不是随机量。
@@ -82,6 +83,31 @@ Redis Lua数据同步有两种方式
 3.2之前redis lua不提供系统时间或者其他外部状态。同时，在Redis的执行随机命令（RANDOMKEY, SRANDMEMBER, TIME）后，写操作将会导致Redis Lua报错，但是如果Lua中没有进行写操作，这些命令是可以使用的。
 <br>
 在Redis4.0之后，可以使用SMEMBERS，SPOP等操作在lua中，因为在Set在lua中做了特殊处理（会对无序的Set进行固定排序操作）。但是在Redis5中又放弃了这项操作（因为Redis5改用了command复制）
+
+#### 选择性开启同步
+在**scripts effects replication**模式下，我们可以使用一下命令选择性开启关闭同步。（这是一项专业要求很高的功能，使用不当会导致主从或者AOF之间数据不同步）
+  ```
+  redis.set_repl(redis.REPL_ALL) -- Replicate to AOF and replicas.
+  redis.set_repl(redis.REPL_AOF) -- Replicate only to AOF.
+  redis.set_repl(redis.REPL_REPLICA) -- Replicate only to replicas (Redis >= 5)
+  redis.set_repl(redis.REPL_SLAVE) -- Used for backward compatibility, the same as REPL_REPLICA.
+  redis.set_repl(redis.REPL_NONE) -- Don't replicate at all.
+  ```
+
+  一个例子
+
+  ```
+  redis.replicate_commands() -- Enable effects replication.
+  redis.call('set','A','1')
+  redis.set_repl(redis.REPL_NONE)
+  redis.call('set','B','2')
+  redis.set_repl(redis.REPL_ALL)
+  redis.call('set','C','3')
+  ```
+  Run上面的脚本，只有A和C会在从节点和AOF中创建，B不会被同步。
+<br>
+适用场景：我们在脚本中求两个Set的交集，生成一个集合A，但是我们只想取集合A的子集B，然后把B同步给从节点和AOF子集，在主上删除A。这种情况下，A集合只是一个临时量，不需要从节点先创建再删除。这种场景尅使用选择性复制。
+
 
 
 ### 脚本超时
