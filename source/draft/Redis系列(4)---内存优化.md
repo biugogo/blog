@@ -14,3 +14,5 @@ zset-max-ziplist-value 64
 set-max-intset-entries 512
 ```
 
+
+# Redis数据结构--SDS
