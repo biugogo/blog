@@ -41,3 +41,22 @@ mem_allocator:jemalloc-4.0.3            --Redis使用的内存分配器，在编
 上述volatile淘汰策略中，如果没有带有ttl的key，Redis对外表现和noeviction一样。
 
 ### 3.Redis对于LRU算法的实现
+
+Redis的LRU算法是一个近似LRU算法，如果实现一个标准的LRU算法（Hash+链表的方式），我们需要将所有KEY用一个链表装起来。这会消耗大量的内存。这对于节约内存到丧心病狂的Redis开发者来说，基本上是不可以接受的。所以Redis的LRU算法，是一个近似LRU算法。
+<br>
+
+我们可以通过调整参数**maxmemory-samples**的大小，来实现进行LRU精度的修改。官方给出的实验结果：
+![Redis LRU实验图](https://redis.io/images/redisdoc/lru_comparison.png)
+
+1. 亮灰色表示被排除的KEY
+2. 灰色代表没有被排除的KEY
+3. 绿色代表新增的KEY
+
+这个实验，首先先填充满Redis，然后再添加50%的新key，让Redis可以过期最近最少使用的Key。在标准的LRU算法中，最近最少使用的KEY全部被排除。在Redis 2.8中，少量的新增KEY被删除了。Redis 3.0后改进了LRU算法，发现新增的KEY不再被删除了，并且随着**maxmemory-samples**参数的增加，实验结果越发接近标准的LRU算法。
+
+
+#### 1.Redis LRU算法实现（2.8）:
+https://yq.aliyun.com/articles/63034?spm=a2c4e.11153940.0.0.2cb0711c70GO5T
+
+#### 2.Redis LRU算法实现（3.0后）：
+https://yq.aliyun.com/articles/64435?utm_campaign=wenzhang&utm_medium=article&utm_source=QQ-qun&utm_content=m_7758
