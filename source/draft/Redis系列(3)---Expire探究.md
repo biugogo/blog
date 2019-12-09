@@ -33,6 +33,10 @@ Redis默认会运行以下程序1秒10次
 
 为了不牺牲主从（AOF）数据一致性，当一个Key过期，Redis的Slave（AOF）不会自己删除Key，而是等待Master节点删除过期Key，并把DEL命令同步给Slave（AOF）。所有的DEL操作发生在Master上。Slave上有完整的Expire信息，以便发生故障晋升为Master时，能够正确的进行过期操作。
 
+### Expire的内存消耗
+
+为Key设置expire，会带来额外的内存消耗。
+
 
 
 
