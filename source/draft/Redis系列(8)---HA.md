@@ -55,7 +55,7 @@ Sentinal parallel-syncs myMaster 1
 主观下线到客观下线的流程：
 
 1. 当Sentinal监视的某个Redis节点主观下线后
-2. 该Sentinal会询问其它该Redis节点的Sentinal，通过发送sentinal is-master-down-by-addr ip port current_epoch runid命令询问其他节点是否同意下线。
+2. 该Sentinal会询问其它该Redis节点的Sentinal，通过发送Sentinal is-master-down-by-addr ip port current_epoch runid命令询问其他节点是否同意下线。
     * ip：主观下线的服务id
     * port：主观下线的服务端口
     * current_epoch：Sentinal的纪元
@@ -93,11 +93,11 @@ Sentinal永远会记录好一个Master的Slaves，即使Slave已经与组织失�
 
 
 ### 2. 客观下线
-* 当一台Sentinal维护的flags属性变为SRI_S_DOWN时，由于在Sentinal集群中且每个Sentinal节点判断master下线的时间间隔可能不一样，所以它必须要去询问其他Sentinal节点这台监督的master节点是否下线。
+* 当一台Sentinal维护的flags属性变为SRI_S_DOWN时，由于在Sentinal集群中且每个Sentinal节点判断Master下线的时间间隔可能不一样，所以它必须要去询问其他Sentinal节点这台监督的Master节点是否下线。
     
 * 通过遍历自己维护的Sentinals dict向其他的Sentinal节点发送命令：
     ```
-    sentinal is-master-down-by-addr <master-ip> <master-port> <current_epoch> <leader_id>
+    sentinal is-master-down-by-addr <Master-ip> <Master-port> <current_epoch> <leader_id>
     ```
     其中leader_id的参数在第一次询问客观下线时，默认 '*' 号。
 
@@ -105,28 +105,28 @@ Sentinal永远会记录好一个Master的Slaves，即使Slave已经与组织失�
     ```
     <down_state> <leader_runid> <leader_epoch> 
     ```
-    * down_state：master的下线状态，0未下线，1已下线。当返回为已下线时，会同步更新flags的对应的第5位标志位**SRI_MASTER_DOWN**为1。
+    * down_state：Master的下线状态，0未下线，1已下线。当返回为已下线时，会同步更新flags的对应的第5位标志位**SRI_Master_DOWN**为1。
     * leader_runid：第一次发送询问时我们传的 '*',所以收到的回复也是'*'
     * leader_epoch: 当前投票纪元，leader_runid为'*'时，该值总为0
 
 * 分析询问结果是否超过 **quorum** 个Sentinal判断Master已下线后，进入客观下线状态。flag状态**SRI_O_DOWN**变为1，进入选举Sentinal leader流程。
 
-在Sentinal监督的master由主观下线状态到客观下线的过程，从命令广播和判断master客观下线这个共识，Sentinal并没有采用什么特殊的算法。客观下线这一状态是在通过命令
-**sentinal is-master-down-by-addr**不断交互慢慢达成的一个共识。**sentinal is-master-down-by-addr**命令大量充斥在Sentinal的网络结构中，当某个Sentinal节点的客观条件得到满足时，选举故障转移的领头选举便也开始了。从整个集群看，当开始进入Leader选举状态时，集群中可能还有Sentinal节点并没有判断出该master已经掉线。
+在Sentinal监督的Master由主观下线状态到客观下线的过程，从命令广播和判断Master客观下线这个共识，Sentinal并没有采用什么特殊的算法。客观下线这一状态是在通过命令
+**Sentinal is-master-down-by-addr**不断交互慢慢达成的一个共识。**Sentinal is-master-down-by-addr**命令大量充斥在Sentinal的网络结构中，当某个Sentinal节点的客观条件得到满足时，选举故障转移的领头选举便也开始了。从整个集群看，当开始进入Leader选举状态时，集群中可能还有Sentinal节点并没有判断出该Master已经掉线。
 
 
 
 ### 3. Sentinal Leader选举
 * 当Sentinel集群中的某个节点判定Master客观下线，开启Sentinal Leader选举流程。这里有一些前提：
-    * master必须满足客观下线
-    * master没有在故障转移中
-    * master是不是距离上次尝试故障转移时间间隔小于2倍故障转移超时
+    * Master必须满足客观下线
+    * Master没有在故障转移中
+    * Master是不是距离上次尝试故障转移时间间隔小于2倍故障转移超时
 
 * 如果满足以上前提，设置Flag状态为**SRI_FAILOVER_IN_PROGRESS**；更新故障转移新纪元。设置Leader选举开始时间（**这里会加上一个随机数，避免同时发起成为leader询问，Raft协议标准**）
 
 * 对外发送命令，寻求其他节点把自己设置为leader节点，这时候leader_id是自己
     ```
-    sentinal is-master-down-by-addr <master-ip> <master-port> <current_epoch> <leader_id> 
+    sentinal is-master-down-by-addr <Master-ip> <Master-port> <current_epoch> <leader_id> 
     ```
 
 * 接收到询问命令后有两种情况：
@@ -150,7 +150,7 @@ Sentinal永远会记录好一个Master的Slaves，即使Slave已经与组织失�
 1. 选择不健康的Slave，以下状态的 Slave 是不健康的：
     * 主观下线的Slave
     * 大于等于5秒没有回复过Sentinel节点ping响应的Slave
-    * 与master失联超过down-after-milliseconds * 10秒的 Slave
+    * 与Master失联超过down-after-milliseconds * 10秒的 Slave
 
 2. 对健康的 Slave 进行排序
     * 选择 priority（从节点优先级，可配置，默认100）最高的从节点，如果有优先级相同的节点，进行下一步。
@@ -158,13 +158,39 @@ Sentinal永远会记录好一个Master的Slaves，即使Slave已经与组织失�
     * 选择runid最小的从节点。
 
 ### 5. 通知选中的Slave成为Master
-* 选则出合适的Slave后，向其发送**Slaveof no one**的命令将其升级为master。
+* 选则出合适的Slave后，向其发送**Slaveof no one**的命令将其升级为Master。
 * Sentinel向选择的Slave发送的info命令来获知Slave的角色是否已被改变。
 * 如果等待超时，选择的Slave INFO信息还没有改变，则宣告故障转移超时失败，重置故障转移，进入新一轮的投票选举。
+* 成功转换为新Master时，会强制更新**hello msg**的pub周期，然后广播。
 
 
 ### 6. 通知其他Slave新的Master
+* 向其他Slaves发送Slave OF \<new Master address>命令，复制新Master。
+* 通过info命令的探测得知，每个Slave是否已重新配置了新的Master
 
-### 7. 旧Master成为新Slave
+故障转移结束。
 
-## 内部算法
+
+## 关于Redis配置版本号
+configuration epoch是当前Redis主从架构的配置版本号，无论是sentinel集群选举 leader还是进行故障转移的时候，要求各sentinel节点得到的configuration epoch都是相同的，sentinel is-master-down-by-addr 命令中就必须有当前配置版本号这个参数，在选举 eader过程中，如果本次选举失败，那么进行下一次选举，就会更新配置版本号，也就是说，每次选举都对应一个新的configuration epoch，在故障转移的过程中，也要求各个sentinel节点使用相同的 configuration epoch。
+
+在故障转移成功之后，sentinel leader 会更新生成最新的Master配置，configuration epoch 也会更新，然后同步给其他的 sentinel 节点，这样保证 sentinel 集群中保存的 Master <-> Slave 配置都是最新的，当 client 请求的时候就会拿到最新的配置信息。
+
+## Redis Sentinel 可能出现的问题以及解决办法
+1. 问题1：异步复制导致的数据丢失
+
+    因为Master -> Slave的复制是异步的，所以可能有部分数据还没复制到Slave，Master 就宕机了，此时这部分数据就丢失了。
+
+2. 问题2：Redis服务脑裂导致的数据丢失
+
+    Master所在机器突然网络故障，跟其他Slave机器不能连接，但是实际上Master还运行着。此时哨兵可能就会认为Master宕机了，然后开启选举，将其他Slave切换成了Master，这个时候，集群里就会有两个Master，也就是所谓的脑裂。此时虽然某个 Slave被切换成了Master，但是client还没来得及切换到新的Master，还继续写向旧 Master的数据就丢失了。因为旧Master再次恢复的时候，会被作为一个Slave挂到新的Master上去，自己的数据会清空，重新从新的Master复制数据。
+
+通过以下两个配置可以减少数据丢失
+```
+min-slaves-to-write <number of Slaves>
+min-slaves-max-lag <number of seconds>
+```
+1. **min-slaves-to-write**: Master必须至少有一个Slave在进行正常复制，否则就拒绝写请求，此时Master丧失可用性。
+2. **min-slaves-max-lag**: Slave在少于min-slaves-max-lag秒内需要回复。
+
+两个条件共同作用至少有min-slaves-to-write个从服务器， 并且这些服务器的延迟值都少于min-slaves-max-lag秒， 那么主服务器就会执行客户端请求的写操作。尽管不能保证写操作的持久性，但起码丢失数据的窗口会被严格限制在指定的秒数中。
