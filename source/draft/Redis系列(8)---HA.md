@@ -64,7 +64,7 @@ Sentinal parallel-syncs myMaster 1
     * down_state（1表示已下线，0表示未下线）
     * leader_runid（领头Sentinal id）
     * leader_epoch（领头Sentinal纪元）
-4. 领头Sentinal接收到超过quorum个回复告诉它某个Master已经down掉了，那么它会判定该Redis节点客观下线ODOWN，这个流程是通过gossip（流言）协议完成的。
+4. 领头Sentinal接收到超过quorum个回复告诉它某个Master已经down掉了，那么它会判定该Redis节点客观下线ODOWN。
 
 ### Sentinal内部定时任务
 1. 每10秒每个Sentinal会对Master和Slave执行info命令，这个任务达到两个目的：发现Slave节点和确认主从关系。
