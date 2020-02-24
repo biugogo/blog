@@ -1,3 +1,13 @@
+---
+title: Redis系列(5)---内存管理策略
+date: 2019-12-07 19:13:50
+tags:
+ -Redis
+categories: DB
+thumbnail: /gallery/marvel/1557842931503.jpg
+---
+
+
 # Redis系列(5)---内存管理策略
 
 Redis占用的系统内存，可能会稍大于我们设置的maxmemory的大小。

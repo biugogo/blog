@@ -1,3 +1,13 @@
+---
+title: Redis系列(8)---HA
+date: 2019-12-18 23:45:20
+tags:
+ -Redis
+categories: DB
+thumbnail: /gallery/marvel/1557842931503.jpg
+---
+
+
 # Redis系列(8)---HA
 
 ## Overview

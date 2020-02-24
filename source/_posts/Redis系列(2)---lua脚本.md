@@ -1,3 +1,12 @@
+---
+title: Redis系列(2)---Lua脚本
+date: 2019-11-12 12:23:17
+tags:
+ -Redis
+categories: DB
+thumbnail: /gallery/marvel/1557842931503.jpg
+---
+
 # Redis系列(2)---Lua脚本
 
 Redis 从2.6.0版本开始支持Lua脚本（5.1），并且默认加载了以下库：

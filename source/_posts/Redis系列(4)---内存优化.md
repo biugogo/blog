@@ -1,3 +1,12 @@
+---
+title: Redis系列（4）---内存与性能优化
+date: 2019-12-01 20:33:10
+tags:
+ -Redis
+categories: DB
+thumbnail: /gallery/marvel/1557842931503.jpg
+---
+
 # Redis系列（4）---内存与性能优化
 
 ## Overview

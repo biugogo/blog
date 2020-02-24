@@ -1,3 +1,12 @@
+---
+title: Redis系列(6)---分布式锁
+date: 2019-12-10 19:45:37
+tags:
+ -Redis
+categories: DB
+thumbnail: /gallery/marvel/1557842931503.jpg
+---
+
 # Redis系列(6)---分布式锁
 
 ## 分布式锁应该有的特性

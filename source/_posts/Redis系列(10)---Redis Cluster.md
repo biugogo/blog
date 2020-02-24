@@ -1,3 +1,13 @@
+---
+title: Redis系列(10)---Redis Cluster
+date: 2019-12-21 23:23:11
+tags:
+ -Redis
+categories: DB
+thumbnail: /gallery/marvel/1557842931503.jpg
+---
+
+
 # Redis系列(10)---Redis Cluster
 
 ## Redis Cluster能带来什么

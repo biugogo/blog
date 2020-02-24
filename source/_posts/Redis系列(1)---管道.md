@@ -1,3 +1,12 @@
+---
+title: Redis系列(1)---管道Pipelining
+date: 2019-11-30 22:22:16
+tags:
+ -Redis
+categories: DB
+thumbnail: /gallery/marvel/1557842931503.jpg
+---
+
 # Redis系列(1)---管道Pipelining
 
 ### RTT(Round Trip Time)

@@ -4,7 +4,7 @@ date: 2018-04-3 20:47:51
 tags:
  -Rabbit
 categories: Framework
-thumbnail: /gallery/dog/1557842869251.jpg
+thumbnail: /gallery/doraemon/1557842807990.jpg
 ---
 
 # RabbitMQ

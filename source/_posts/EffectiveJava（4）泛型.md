@@ -4,7 +4,7 @@ date: 2019-6-2 16:17:54
 tags:
  -EffectiveJava
 categories: Basic
-thumbnail: /gallery/lol/1557842709233.jpg
+thumbnail: /gallery/lol/1557842817807.jpg
 ---
 
 # EffectiveJava(4)--泛型

@@ -1,3 +1,12 @@
+---
+title: Redis系列（3）---Expire探究
+date: 2019-11-16 21:22:11
+tags:
+ -Redis
+categories: DB
+thumbnail: /gallery/marvel/1557842931503.jpg
+---
+
 # Redis系列（3）---Expire探究
 
 ---
